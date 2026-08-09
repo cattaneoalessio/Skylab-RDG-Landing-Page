@@ -1,0 +1,41 @@
+# robots.txt — Skylab (sostituisci YOUR-DOMAIN-HERE.it col dominio reale)
+
+# Motori di ricerca tradizionali: accesso libero
+User-agent: *
+Allow: /
+
+# Motori/agenti di ricerca AI che portano traffico referenziato (consigliato: consentire)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Crawler che raccolgono contenuti per addestrare modelli AI (non per la ricerca):
+# lasciati ad Allow di default qui sotto. Se preferite NON essere usati per
+# addestrare modelli di terze parti, cambiate questi in "Disallow: /".
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://YOUR-DOMAIN-HERE.it/sitemap.xml
