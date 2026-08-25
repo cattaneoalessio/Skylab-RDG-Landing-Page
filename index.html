@@ -55,12 +55,12 @@ _iub.csConfiguration = {
 <meta name="twitter:description" content="110 mq di terrazza esclusiva sopra lo skyline di Milano, davanti alla Stazione Centrale.">
 <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.it/assets/hero-header.jpg">
 
-<link rel="icon" type="image/png" href="assets/cropped-logo_blu_trasp-270x270.png">
-<link rel="shortcut icon" href="assets/cropped-logo_blu_trasp-270x270.png">
-<link rel="apple-touch-icon" href="assets/cropped-logo_blu_trasp-270x270.png">
+<link rel="icon" type="image/png" href="https://rdg.it/wp-content/uploads/2025/07/cropped-logo_blu_trasp-270x270.png">
+<link rel="shortcut icon" href="https://rdg.it/wp-content/uploads/2025/07/cropped-logo_blu_trasp-270x270.png">
+<link rel="apple-touch-icon" href="https://rdg.it/wp-content/uploads/2025/07/cropped-logo_blu_trasp-270x270.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- ============================================================
      DATI STRUTTURATI (JSON-LD) — aiutano sia Google (rich results)
@@ -162,17 +162,17 @@ _iub.csConfiguration = {
 
 <style>
   :root{
-    --navy-deep:#081326;
-    --navy:#0f2140;
-    --navy-mid:#17325a;
-    --navy-line:rgba(143,168,204,0.18);
-    --steel:#93a8c4;
-    --steel-dim:#5f7391;
-    --gold:#cd9b4f;
-    --gold-light:#ecc383;
-    --paper:#f3f5f9;
-    --paper-dim:#dfe4ec;
-    --ink:#0a1420;
+    --navy-deep:#0D2D56;
+    --navy:#1A4A8A;
+    --navy-mid:#1A4A8A;
+    --navy-line:rgba(255,255,255,0.16);
+    --steel:#AAB4C2;
+    --steel-dim:#6B6B6B;
+    --gold:#F9C001;
+    --gold-light:#D9A601;
+    --paper:#F9F9F9;
+    --paper-dim:#ECECEC;
+    --ink:#0D2D56;
     --white:#ffffff;
     --ease:cubic-bezier(.22,.68,0,1);
   }
@@ -182,19 +182,19 @@ _iub.csConfiguration = {
     margin:0;
     background:var(--paper);
     color:var(--ink);
-    font-family:'Inter',sans-serif;
+    font-family:'Poppins',sans-serif;
     font-size:16px;
     line-height:1.55;
     -webkit-font-smoothing:antialiased;
   }
   h1,h2,h3,.display{
-    font-family:'Space Grotesk',sans-serif;
+    font-family:'Poppins',sans-serif;
     font-weight:600;
     letter-spacing:-0.01em;
     margin:0;
   }
   .mono{
-    font-family:'JetBrains Mono',monospace;
+    font-family:'Poppins',sans-serif;
   }
   p{margin:0;}
   a{color:inherit;text-decoration:none;}
@@ -206,7 +206,7 @@ _iub.csConfiguration = {
     padding:0 clamp(20px,5vw,64px);
   }
   .eyebrow{
-    font-family:'JetBrains Mono',monospace;
+    font-family:'Poppins',sans-serif;
     font-size:12.5px;
     letter-spacing:0.16em;
     text-transform:uppercase;
@@ -268,22 +268,22 @@ _iub.csConfiguration = {
   /* ---------- blocco di accesso con codice ---------- */
   #accessGate{
     position:fixed;inset:0;z-index:1000;
-    background:radial-gradient(circle at 30% 20%, #142a4d 0%, var(--navy-deep) 60%);
+    background:radial-gradient(circle at 30% 20%, #1A4A8A 0%, var(--navy-deep) 60%);
     display:flex;align-items:center;justify-content:center;
     padding:24px;
   }
   .gate-card{
     max-width:380px;width:100%;text-align:center;
-    background:rgba(15,33,64,0.6);border:1px solid var(--navy-line);
+    background:rgba(13,45,86,0.6);border:1px solid var(--navy-line);
     border-radius:8px;padding:44px 32px;
     backdrop-filter:blur(8px);
   }
   .gate-brand{
-    font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:22px;
     letter-spacing:0.06em;color:var(--white);margin-bottom:18px;
   }
   .gate-title{
-    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:18px;
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:18px;
     color:var(--white);margin:0 0 10px;
   }
   .gate-sub{
@@ -293,14 +293,14 @@ _iub.csConfiguration = {
   #gateInput{
     width:100%;background:rgba(255,255,255,0.05);border:1px solid var(--navy-line);
     color:var(--white);padding:13px 16px;border-radius:4px;
-    font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:0.08em;
+    font-family:'Poppins',sans-serif;font-size:14px;letter-spacing:0.08em;
     text-align:center;
   }
-  #gateInput::placeholder{color:var(--steel-dim);letter-spacing:normal;font-family:'Inter',sans-serif;}
+  #gateInput::placeholder{color:var(--steel);letter-spacing:normal;font-family:'Poppins',sans-serif;}
   #gateInput:focus{outline:none;border-color:var(--gold);}
   #gateForm button{
     background:var(--gold);color:var(--navy-deep);border:none;
-    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:14.5px;
     padding:13px 20px;border-radius:4px;cursor:pointer;transition:background .25s, transform .25s;
   }
   #gateForm button:hover{background:var(--gold-light);transform:translateY(-1px);}
@@ -319,7 +319,7 @@ _iub.csConfiguration = {
     transition:background .4s var(--ease), padding .4s var(--ease), backdrop-filter .4s var(--ease);
   }
   header.solid{
-    background:rgba(8,19,38,0.86);
+    background:rgba(13,45,86,0.86);
     backdrop-filter:blur(10px);
     padding-top:14px;padding-bottom:14px;
     border-bottom:1px solid var(--navy-line);
@@ -329,11 +329,11 @@ _iub.csConfiguration = {
     color:var(--white);
   }
   .brand .name{
-    font-family:'Space Grotesk',sans-serif;
+    font-family:'Poppins',sans-serif;
     font-weight:700;font-size:20px;letter-spacing:0.02em;
   }
   .brand .tag{
-    font-family:'JetBrains Mono',monospace;
+    font-family:'Poppins',sans-serif;
     font-size:10px;letter-spacing:0.14em;color:var(--steel);margin-top:4px;
   }
   .head-actions{display:flex;align-items:center;gap:14px;}
@@ -342,23 +342,23 @@ _iub.csConfiguration = {
   }
   .lang-toggle button{
     background:transparent;border:none;color:var(--steel);
-    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.08em;
+    font-family:'Poppins',sans-serif;font-size:11.5px;letter-spacing:0.08em;
     padding:7px 12px;cursor:pointer;transition:background .25s,color .25s;
   }
   .lang-toggle button.active{background:var(--gold);color:var(--navy-deep);font-weight:600;}
   .btn{
     display:inline-flex;align-items:center;gap:8px;
-    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14.5px;
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:14.5px;
     padding:11px 20px;border-radius:999px;cursor:pointer;
     border:1px solid transparent;transition:transform .3s var(--ease), background .3s, box-shadow .3s;
     white-space:nowrap;
   }
   .btn-gold{background:var(--gold);color:var(--navy-deep);}
-  .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(205,155,79,.55);}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(249,192,1,.55);}
   .btn-ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,0.35);}
   .btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);transform:translateY(-2px);}
-  .btn-dark{background:var(--navy-deep);color:var(--white);}
-  .btn-dark:hover{background:var(--navy);transform:translateY(-2px);}
+  .btn-dark{background:var(--navy);color:var(--white);}
+  .btn-dark:hover{background:var(--navy-deep);transform:translateY(-2px);}
 
   /* ---------- vertical rail (signature element) ---------- */
   #rail{
@@ -366,7 +366,7 @@ _iub.csConfiguration = {
     z-index:140;display:flex;flex-direction:column;align-items:flex-end;gap:0;
   }
   #railReadout{
-    font-family:'JetBrains Mono',monospace;
+    font-family:'Poppins',sans-serif;
     font-size:11px;color:var(--steel);
     letter-spacing:0.1em;margin-bottom:16px;text-align:right;
   }
@@ -392,12 +392,12 @@ _iub.csConfiguration = {
     flex-shrink:0;
   }
   .rail-tick .lbl{
-    font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.08em;
+    font-family:'Poppins',sans-serif;font-size:10.5px;letter-spacing:0.08em;
     color:var(--steel-dim);white-space:nowrap;opacity:0;transform:translateX(6px);
     transition:all .3s var(--ease);
   }
   .rail-tick:hover .lbl{opacity:1;transform:none;color:var(--steel);}
-  .rail-tick.active .dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(205,155,79,.2);}
+  .rail-tick.active .dot{background:var(--gold);border-color:var(--gold);box-shadow:0 0 0 4px rgba(249,192,1,.2);}
   .rail-tick.active .lbl{opacity:1;transform:none;color:var(--gold-light);}
   @media (max-width:980px){
     #rail{display:none;}
@@ -420,11 +420,11 @@ _iub.csConfiguration = {
   }
   #hero .bg-layer::before{
     content:"";position:absolute;inset:0;z-index:1;
-    background:rgba(10,21,43,0.42);mix-blend-mode:multiply;
+    background:rgba(13,45,86,0.42);mix-blend-mode:multiply;
   }
   #hero .bg-layer::after{
     content:"";position:absolute;inset:0;z-index:1;
-    background:linear-gradient(0deg, rgba(6,13,26,0.96) 0%, rgba(6,13,26,0.68) 40%, rgba(6,13,26,0.4) 65%, rgba(6,13,26,0.6) 100%);
+    background:linear-gradient(0deg, rgba(13,45,86,0.96) 0%, rgba(13,45,86,0.68) 40%, rgba(13,45,86,0.4) 65%, rgba(13,45,86,0.6) 100%);
   }
   #hero .content{
     position:relative;z-index:2;color:var(--white);
@@ -452,7 +452,7 @@ _iub.csConfiguration = {
   #hero .scroll-cue{
     position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
     z-index:2;color:var(--steel);display:flex;flex-direction:column;align-items:center;gap:8px;
-    font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;
+    font-family:'Poppins',sans-serif;font-size:10px;letter-spacing:0.16em;
   }
   .scroll-cue .line{width:1px;height:34px;background:linear-gradient(180deg,var(--gold),transparent);animation:pulse 2s infinite;}
   @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
@@ -465,7 +465,7 @@ _iub.csConfiguration = {
   .arrive-bg video{width:100%;height:100%;object-fit:cover;transform:scale(1.15);}
   .arrive-bg::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(100deg, rgba(8,19,38,0.92) 0%, rgba(8,19,38,0.82) 45%, rgba(8,19,38,0.6) 100%);
+    background:linear-gradient(100deg, rgba(13,45,86,0.92) 0%, rgba(13,45,86,0.82) 45%, rgba(13,45,86,0.6) 100%);
   }
   .section.dark .eyebrow{color:var(--gold-light);}
   .section-title{
@@ -499,12 +499,13 @@ _iub.csConfiguration = {
   }
   .section:not(.dark) .stat{background:var(--paper);}
   .stat .num{
-    font-family:'JetBrains Mono',monospace;color:var(--gold);
+    font-family:'Poppins',sans-serif;color:var(--gold);
     font-size:clamp(24px,3vw,32px);display:block;margin-bottom:6px;
   }
   .stat .lbl{
     font-size:12.5px;letter-spacing:0.04em;color:var(--steel-dim);
   }
+  .section.dark .stat .lbl{color:var(--steel);}
   @media (max-width:860px){
     #spazio .grid{grid-template-columns:1fr;gap:40px;}
   }
@@ -519,7 +520,7 @@ _iub.csConfiguration = {
   .break-bg img, .break-bg video{width:100%;height:100%;object-fit:cover;transform:scale(1.15);}
   .break-bg::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(8,19,38,0.55) 0%, rgba(8,19,38,0.72) 100%);
+    background:linear-gradient(180deg, rgba(13,45,86,0.55) 0%, rgba(13,45,86,0.72) 100%);
   }
   .break-content{position:relative;z-index:2;text-align:center;}
   /* velatura B/N leggermente blu per i video reali, coerente con la palette navy */
@@ -527,7 +528,7 @@ _iub.csConfiguration = {
     filter:grayscale(45%) sepia(10%) hue-rotate(175deg) saturate(1.15) brightness(0.82) contrast(1.08);
   }
   .break-line{
-    font-family:'Space Grotesk',sans-serif;color:var(--white);
+    font-family:'Poppins',sans-serif;color:var(--white);
     font-size:clamp(28px,5vw,58px);line-height:1.08;font-weight:600;
     letter-spacing:-0.01em;
   }
@@ -557,7 +558,7 @@ _iub.csConfiguration = {
     transition:background .35s var(--ease);
   }
   .ev-card:hover{background:var(--navy-mid);}
-  .ev-card .n{font-family:'JetBrains Mono',monospace;color:var(--gold);font-size:12px;}
+  .ev-card .n{font-family:'Poppins',sans-serif;color:var(--gold);font-size:12px;}
   .ev-card h3{font-size:19px;margin:20px 0 10px;color:var(--white);}
   .ev-card p{font-size:14px;color:var(--steel);}
   @media (max-width:860px){
@@ -589,13 +590,13 @@ _iub.csConfiguration = {
   .gal-grid figure:hover img{transform:scale(1.08);}
   .gal-grid figure::after{
     content:"";position:absolute;inset:0;
-    background:linear-gradient(0deg, rgba(8,19,38,.55) 0%, transparent 45%);
+    background:linear-gradient(0deg, rgba(13,45,86,.55) 0%, transparent 45%);
     opacity:0;transition:opacity .3s;
   }
   .gal-grid figure:hover::after{opacity:1;}
   .gal-zoom{
     position:absolute;right:12px;bottom:12px;width:30px;height:30px;border-radius:50%;
-    background:rgba(8,19,38,.65);border:1px solid rgba(255,255,255,.3);
+    background:rgba(13,45,86,.65);border:1px solid rgba(255,255,255,.3);
     display:flex;align-items:center;justify-content:center;color:var(--white);
     opacity:0;transform:scale(.8);transition:all .3s var(--ease);
   }
@@ -613,7 +614,7 @@ _iub.csConfiguration = {
     cursor:default;
   }
   .gal-cta p{max-width:44ch;color:var(--steel);font-size:14.5px;}
-  .gal-cta strong{color:var(--white);font-family:'Space Grotesk',sans-serif;font-size:18px;display:block;margin-bottom:6px;}
+  .gal-cta strong{color:var(--white);font-family:'Poppins',sans-serif;font-size:18px;display:block;margin-bottom:6px;}
   @media (max-width:760px){
     .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px;}
     .gal-a,.gal-b,.gal-c,.gal-d{grid-column:span 1;grid-row:span 2;}
@@ -622,7 +623,7 @@ _iub.csConfiguration = {
 
   /* ---- realizzati / esempi (horizontal showcase) ---- */
   .example-tag{
-    display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;
+    display:inline-block;font-family:'Poppins',sans-serif;font-size:10.5px;
     letter-spacing:.1em;color:var(--gold);border:1px solid var(--navy-line);
     padding:4px 10px;border-radius:999px;margin-bottom:20px;
   }
@@ -641,7 +642,7 @@ _iub.csConfiguration = {
   .showcase-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);}
   .showcase-card:hover .showcase-photo img{transform:scale(1.05);}
   .showcase-cat{
-    font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;
+    font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:.08em;
     color:var(--gold);margin-bottom:8px;display:block;
   }
   .showcase-card h3{font-size:18px;margin-bottom:8px;}
@@ -663,7 +664,7 @@ _iub.csConfiguration = {
     animation:morph 18s ease-in-out infinite;
   }
   .blob-gold{background:radial-gradient(circle at 35% 35%, var(--gold), transparent 70%);}
-  .blob-steel{background:radial-gradient(circle at 40% 40%, var(--steel), transparent 70%);}
+  .blob-steel{background:radial-gradient(circle at 40% 40%, var(--navy), transparent 70%);}
   @keyframes morph{
     0%{border-radius:42% 58% 65% 35%/45% 45% 55% 55%;transform:rotate(0deg) scale(1);}
     33%{border-radius:60% 40% 30% 70%/50% 60% 40% 50%;transform:rotate(10deg) scale(1.08);}
@@ -677,7 +678,7 @@ _iub.csConfiguration = {
 
   /* ---- lightbox ---- */
   #lightbox{
-    position:fixed;inset:0;z-index:400;background:rgba(6,13,26,0.96);
+    position:fixed;inset:0;z-index:400;background:rgba(13,45,86,0.96);
     display:flex;align-items:center;justify-content:center;
     opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
   }
@@ -691,7 +692,7 @@ _iub.csConfiguration = {
   #lightbox img.loaded{opacity:1;}
   #lightbox .lb-counter{
     text-align:center;margin-top:16px;color:var(--steel);
-    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;
+    font-family:'Poppins',sans-serif;font-size:12px;letter-spacing:.08em;
   }
   #lightbox .lb-btn{
     position:absolute;top:50%;transform:translateY(-50%);
@@ -725,7 +726,7 @@ _iub.csConfiguration = {
   .faq-item summary{
     list-style:none;cursor:pointer;padding:22px 4px;
     display:flex;align-items:center;justify-content:space-between;gap:20px;
-    font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:16.5px;
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:16.5px;
   }
   .faq-item summary::-webkit-details-marker{display:none;}
   .faq-icon{
@@ -745,20 +746,21 @@ _iub.csConfiguration = {
   .chip-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px;}
   .chip{
     border:1px solid var(--navy-line);padding:10px 18px;border-radius:999px;
-    font-size:13.5px;font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;
-    color:var(--steel);
+    font-size:13.5px;font-family:'Poppins',sans-serif;letter-spacing:0.02em;
+    color:var(--steel-dim);
   }
   .section.dark .chip{color:var(--paper-dim);}
+  .section:not(.dark) .chip{border-color:var(--paper-dim);}
 
   /* ---- come arrivare ---- */
   #arrivare .grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
   .addr-card{
     border:1px solid var(--navy-line);padding:32px;border-radius:6px;
-    background:rgba(8,19,38,0.72);backdrop-filter:blur(6px);
+    background:rgba(13,45,86,0.72);backdrop-filter:blur(6px);
   }
   .addr-card .line{display:flex;gap:14px;margin-bottom:18px;font-size:14.5px;color:var(--steel);}
   .addr-card .line svg{flex-shrink:0;width:18px;height:18px;color:var(--gold);margin-top:2px;}
-  .addr-card .line strong{color:var(--white);display:block;font-family:'Space Grotesk',sans-serif;font-size:15.5px;margin-bottom:3px;}
+  .addr-card .line strong{color:var(--white);display:block;font-family:'Poppins',sans-serif;font-size:15.5px;margin-bottom:3px;}
   @media (max-width:860px){#arrivare .grid{grid-template-columns:1fr;gap:36px;}}
 
   /* ---- contatti ---- */
@@ -766,10 +768,10 @@ _iub.csConfiguration = {
   #contatti .grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:start;margin-top:50px;}
   form{display:flex;flex-direction:column;gap:16px;}
   .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  label{font-size:12.5px;letter-spacing:0.04em;color:var(--steel-dim);margin-bottom:6px;display:block;font-family:'JetBrains Mono',monospace;}
+  label{font-size:12.5px;letter-spacing:0.04em;color:var(--steel-dim);margin-bottom:6px;display:block;font-family:'Poppins',sans-serif;}
   input,select,textarea{
     width:100%;background:var(--white);border:1px solid var(--paper-dim);
-    padding:13px 14px;font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);
+    padding:13px 14px;font-family:'Poppins',sans-serif;font-size:14.5px;color:var(--ink);
     border-radius:3px;transition:border-color .25s;
   }
   input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none;}
@@ -792,7 +794,7 @@ _iub.csConfiguration = {
     width:38px;height:38px;border:1px solid var(--navy-line);border-radius:50%;
     display:flex;align-items:center;justify-content:center;transition:all .25s;
   }
-  .social-row a:hover{border-color:var(--gold);background:rgba(205,155,79,.12);}
+  .social-row a:hover{border-color:var(--gold);background:rgba(249,192,1,.12);}
   .social-row svg{width:16px;height:16px;color:var(--white);}
   @media (max-width:860px){#contatti .grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}}
 
@@ -800,7 +802,7 @@ _iub.csConfiguration = {
   footer{background:var(--navy-deep);color:var(--steel);padding:44px 0 30px;border-top:1px solid var(--navy-line);}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
   footer .flogo{height:22px;opacity:0.85;}
-  footer .fine{font-size:12px;color:var(--steel-dim);line-height:1.7;}
+  footer .fine{font-size:12px;color:var(--steel);line-height:1.7;}
   footer .fine a{color:var(--steel);}
   footer .fine a:hover{color:var(--gold-light);}
   footer .legal-links{flex-basis:100%;text-align:right;}
@@ -918,7 +920,7 @@ _iub.csConfiguration = {
     <h2 class="section-title reveal" data-i18n="events_title">Un palco per ogni format.</h2>
     <p class="lede reveal" data-i18n="events_lede">Da un kick-off aziendale a un aperitivo di networking: Skylab si adatta al tuo evento, non il contrario.</p>
     <div class="ev-grid">
-      <div class="ev-card reveal"><span class="n mono">01</span><h3 data-i18n="ev1_title">Eventi aziendali</h3><p data-i18n="ev1_body">Convention, kick-off, formazione aziendale e momenti che rafforzano il team, in una cornice fuori dal comune.</p></div>
+      <div class="ev-card reveal"><span class="n mono">01</span><h3 data-i18n="ev1_title">Eventi aziendali</h3><p data-i18n="ev1_body">Convention, kick-off e momenti che rafforzano il team, in una cornice fuori dal comune.</p></div>
       <div class="ev-card reveal"><span class="n mono">02</span><h3 data-i18n="ev2_title">Lancio prodotto</h3><p data-i18n="ev2_body">Un debutto che merita una vista all'altezza dell'occasione.</p></div>
       <div class="ev-card reveal"><span class="n mono">03</span><h3 data-i18n="ev3_title">Conferenze stampa</h3><p data-i18n="ev3_body">Location istituzionale, centrale e riconoscibile, a due passi dalla stampa nazionale.</p></div>
       <div class="ev-card reveal"><span class="n mono">04</span><h3 data-i18n="ev4_title">Workshop &amp; talk</h3><p data-i18n="ev4_body">Formati agili e partecipati, in un ambiente che stimola il confronto.</p></div>
@@ -1011,7 +1013,7 @@ _iub.csConfiguration = {
   <div class="wrap">
     <div class="eyebrow reveal" data-i18n="showcase_eyebrow">FORMAT IN AZIONE</div>
     <h2 class="section-title reveal" data-i18n="showcase_title">Cosa può succedere quassù.</h2>
-    <p class="lede reveal" data-i18n="showcase_lede">Alcuni esempi del tipo di evento che la terrazza può ospitare.</p>
+    <p class="lede reveal" data-i18n="showcase_lede">Alcuni esempi del tipo di evento che la terrazza può ospitare — sostituiteli con le vostre foto reali non appena disponibili.</p>
     <div class="showcase-track" id="showcaseTrack">
       <div class="showcase-card reveal">
         <span class="example-tag" data-i18n="showcase_example_tag">ESEMPIO</span>
@@ -1029,7 +1031,7 @@ _iub.csConfiguration = {
       </div>
       <div class="showcase-card reveal">
         <span class="example-tag" data-i18n="showcase_example_tag">ESEMPIO</span>
-        <div class="showcase-photo"><img src="assets/Terrazza-RDG-Milano.jpg" alt="Conferenza stampa in terrazza" loading="lazy"></div>
+        <div class="showcase-photo"><img src="https://rdg.it/wp-content/uploads/2026/06/Terrazza-RDG-Milano.jpg" alt="Conferenza stampa in terrazza" loading="lazy"></div>
         <span class="showcase-cat" data-i18n="sc3_cat">CONFERENZA STAMPA</span>
         <h3 data-i18n="sc3_title">Incontro con la stampa</h3>
         <p data-i18n="sc3_body">Una location istituzionale e riconoscibile, a due passi dalle redazioni milanesi.</p>
@@ -1260,7 +1262,7 @@ _iub.csConfiguration = {
 
 <footer>
   <div class="wrap">
-    <img class="flogo" src="assets/logo_bianco_completo-footer.png" alt="RDG Formazione">
+    <img class="flogo" src="https://rdg.it/wp-content/uploads/2026/06/logo_bianco_completo-footer.png" alt="RDG Formazione">
     <p class="fine" data-i18n-html="footer_text">Skylab è uno spazio eventi di RDG Formazione · Via Antonio da Recanate, 2 – 20124 Milano · <a href="https://rdg.it" target="_blank" rel="noopener">rdg.it</a></p>
     <p class="fine legal-links">
       <a href="https://www.iubenda.com/privacy-policy/IUBENDA_POLICY_ID" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
@@ -1312,7 +1314,7 @@ _iub.csConfiguration = {
       stat3_label:"A piedi da Milano Centrale", stat4_label:"Vista sullo skyline",
       events_eyebrow:"GLI EVENTI", events_title:"Un palco per ogni format.",
       events_lede:"Da un kick-off aziendale a un aperitivo di networking: Skylab si adatta al tuo evento, non il contrario.",
-      ev1_title:"Eventi aziendali", ev1_body:"Convention, kick-off, formazione aziendale e momenti che rafforzano il team, in una cornice fuori dal comune.",
+      ev1_title:"Eventi aziendali", ev1_body:"Convention, kick-off e momenti che rafforzano il team, in una cornice fuori dal comune.",
       ev2_title:"Lancio prodotto", ev2_body:"Un debutto che merita una vista all'altezza dell'occasione.",
       ev3_title:"Conferenze stampa", ev3_body:"Location istituzionale, centrale e riconoscibile, a due passi dalla stampa nazionale.",
       ev4_title:"Workshop & talk", ev4_body:"Formati agili e partecipati, in un ambiente che stimola il confronto.",
@@ -1330,7 +1332,7 @@ _iub.csConfiguration = {
       gallery_cta_text:"Seguiteci su @rdg_formazione per video e contenuti dal vivo dalla terrazza.",
       gallery_cta_button:"Vai al profilo →",
       showcase_eyebrow:"FORMAT IN AZIONE", showcase_title:"Cosa può succedere quassù.",
-      showcase_lede:"Alcuni esempi del tipo di evento che la terrazza può ospitare.",
+      showcase_lede:"Alcuni esempi del tipo di evento che la terrazza può ospitare — sostituiteli con le vostre foto reali non appena disponibili.",
       showcase_example_tag:"ESEMPIO",
       sc1_cat:"EVENTO AZIENDALE", sc1_title:"Convention & kick-off", sc1_body:"Un format per riunire il team con una vista che motiva, tra momenti plenari e networking informale.",
       sc2_cat:"LANCIO PRODOTTO", sc2_title:"Product launch", sc2_body:"Presentazione scenica con luci e palco, per un debutto che resta impresso agli ospiti.",
@@ -1413,7 +1415,7 @@ _iub.csConfiguration = {
       gallery_cta_text:"Follow @rdg_formazione for videos and live content from the terrace.",
       gallery_cta_button:"Go to profile →",
       showcase_eyebrow:"FORMATS IN ACTION", showcase_title:"What could happen up here.",
-      showcase_lede:"A few examples of the kind of event the terrace can host.",
+      showcase_lede:"A few examples of the kind of event the terrace can host — swap these for your own real photos as soon as they're available.",
       showcase_example_tag:"EXAMPLE",
       sc1_cat:"CORPORATE EVENT", sc1_title:"Convention & kick-off", sc1_body:"A format to bring the team together with a view that motivates, mixing plenary moments and informal networking.",
       sc2_cat:"PRODUCT LAUNCH", sc2_title:"Product launch", sc2_body:"A staged presentation with lights and a platform, for a debut guests will remember.",
