@@ -55,9 +55,9 @@ _iub.csConfiguration = {
 <meta name="twitter:description" content="110 mq di terrazza esclusiva sopra lo skyline di Milano, davanti alla Stazione Centrale.">
 <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.it/assets/hero-header.jpg">
 
-<link rel="icon" type="image/png" href="https://rdg.it/wp-content/uploads/2025/07/cropped-logo_blu_trasp-270x270.png">
-<link rel="shortcut icon" href="https://rdg.it/wp-content/uploads/2025/07/cropped-logo_blu_trasp-270x270.png">
-<link rel="apple-touch-icon" href="https://rdg.it/wp-content/uploads/2025/07/cropped-logo_blu_trasp-270x270.png">
+<link rel="icon" type="image/png" href="assets/cropped-logo_blu_trasp-270x270.png">
+<link rel="shortcut icon" href="assets/cropped-logo_blu_trasp-270x270.png">
+<link rel="apple-touch-icon" href="assets/cropped-logo_blu_trasp-270x270.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -649,13 +649,30 @@ _iub.csConfiguration = {
   .showcase-card p{font-size:13.5px;color:var(--steel-dim);}
   .section.dark .showcase-card p{color:var(--steel);}
   .showcase-nav{display:flex;gap:12px;margin-top:6px;}
-  .showcase-nav button{
-    width:44px;height:44px;border-radius:50%;border:1px solid var(--navy-line);
-    background:transparent;color:var(--white);cursor:pointer;
-    display:flex;align-items:center;justify-content:center;transition:all .25s;
-  }
-  .showcase-nav button:hover{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);}
-  .showcase-nav svg{width:17px;height:17px;}
+ .showcase-nav button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--gold); /* Cambiato da --navy-line a --gold */
+  background: transparent;
+  color: var(--gold);           /* Cambiato da --white a --gold per rendere l'icona gialla */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .25s;
+}
+
+.showcase-nav button:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--navy-deep);       /* L'icona diventerà blu scuro sull'hover giallo */
+}
+
+.showcase-nav svg {
+  width: 17px;
+  height: 17px;
+}
 
   /* ---- decorative morphing blobs ---- */
   .blob{
@@ -920,7 +937,7 @@ _iub.csConfiguration = {
     <h2 class="section-title reveal" data-i18n="events_title">Un palco per ogni format.</h2>
     <p class="lede reveal" data-i18n="events_lede">Da un kick-off aziendale a un aperitivo di networking: Skylab si adatta al tuo evento, non il contrario.</p>
     <div class="ev-grid">
-      <div class="ev-card reveal"><span class="n mono">01</span><h3 data-i18n="ev1_title">Eventi aziendali</h3><p data-i18n="ev1_body">Convention, kick-off e momenti che rafforzano il team, in una cornice fuori dal comune.</p></div>
+      <div class="ev-card reveal"><span class="n mono">01</span><h3 data-i18n="ev1_title">Eventi aziendali</h3><p data-i18n="ev1_body">Convention, kick-off, formazione e momenti che rafforzano il team, in una cornice fuori dal comune.</p></div>
       <div class="ev-card reveal"><span class="n mono">02</span><h3 data-i18n="ev2_title">Lancio prodotto</h3><p data-i18n="ev2_body">Un debutto che merita una vista all'altezza dell'occasione.</p></div>
       <div class="ev-card reveal"><span class="n mono">03</span><h3 data-i18n="ev3_title">Conferenze stampa</h3><p data-i18n="ev3_body">Location istituzionale, centrale e riconoscibile, a due passi dalla stampa nazionale.</p></div>
       <div class="ev-card reveal"><span class="n mono">04</span><h3 data-i18n="ev4_title">Workshop &amp; talk</h3><p data-i18n="ev4_body">Formati agili e partecipati, in un ambiente che stimola il confronto.</p></div>
@@ -1013,7 +1030,7 @@ _iub.csConfiguration = {
   <div class="wrap">
     <div class="eyebrow reveal" data-i18n="showcase_eyebrow">FORMAT IN AZIONE</div>
     <h2 class="section-title reveal" data-i18n="showcase_title">Cosa può succedere quassù.</h2>
-    <p class="lede reveal" data-i18n="showcase_lede">Alcuni esempi del tipo di evento che la terrazza può ospitare — sostituiteli con le vostre foto reali non appena disponibili.</p>
+    <p class="lede reveal" data-i18n="showcase_lede">Alcuni esempi del tipo di evento che la terrazza può ospitare.</p>
     <div class="showcase-track" id="showcaseTrack">
       <div class="showcase-card reveal">
         <span class="example-tag" data-i18n="showcase_example_tag">ESEMPIO</span>
@@ -1031,7 +1048,7 @@ _iub.csConfiguration = {
       </div>
       <div class="showcase-card reveal">
         <span class="example-tag" data-i18n="showcase_example_tag">ESEMPIO</span>
-        <div class="showcase-photo"><img src="https://rdg.it/wp-content/uploads/2026/06/Terrazza-RDG-Milano.jpg" alt="Conferenza stampa in terrazza" loading="lazy"></div>
+        <div class="showcase-photo"><img src="assets/Terrazza-RDG-Milano.jpg" alt="Conferenza stampa in terrazza" loading="lazy"></div>
         <span class="showcase-cat" data-i18n="sc3_cat">CONFERENZA STAMPA</span>
         <h3 data-i18n="sc3_title">Incontro con la stampa</h3>
         <p data-i18n="sc3_body">Una location istituzionale e riconoscibile, a due passi dalle redazioni milanesi.</p>
