@@ -36,7 +36,7 @@ _iub.csConfiguration = {
      content="index, follow, max-image-preview:large, max-snippet:-1" -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="author" content="RDG Formazione">
-<link rel="canonical" href="https://skylab.rdg.it/">
+<link rel="canonical" href="https://YOUR-DOMAIN-HERE.it/">
 
 
 <!-- Open Graph -->
@@ -44,8 +44,8 @@ _iub.csConfiguration = {
 <meta property="og:site_name" content="Skylab by RDG Formazione">
 <meta property="og:title" content="Terrazza a Milano per Eventi Aziendali | Skylab – Skyline Milano">
 <meta property="og:description" content="110 mq di terrazza esclusiva sopra lo skyline di Milano, davanti alla Stazione Centrale. Lo spazio eventi firmato RDG Formazione per aziende e agenzie.">
-<meta property="og:image" content="https://skylab.rdg.it/assets/hero-header.jpg">
-<meta property="og:url" content="https://skylab.rdg.it/">
+<meta property="og:image" content="https://YOUR-DOMAIN-HERE.it/assets/hero-header.jpg">
+<meta property="og:url" content="https://YOUR-DOMAIN-HERE.it/">
 <meta property="og:locale" content="it_IT">
 <meta property="og:locale:alternate" content="en_US">
 
@@ -53,7 +53,7 @@ _iub.csConfiguration = {
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Terrazza a Milano per Eventi Aziendali | Skylab">
 <meta name="twitter:description" content="110 mq di terrazza esclusiva sopra lo skyline di Milano, davanti alla Stazione Centrale.">
-<meta name="twitter:image" content="https://skylab.rdg.it/assets/hero-header.jpg">
+<meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.it/assets/hero-header.jpg">
 
 <link rel="icon" type="image/png" href="assets/cropped-logo_blu_trasp-270x270.png">
 <link rel="shortcut icon" href="assets/cropped-logo_blu_trasp-270x270.png">
@@ -76,9 +76,9 @@ _iub.csConfiguration = {
   "name": "Skylab",
   "alternateName": "Skylab by RDG Formazione",
   "description": "Skylab è una terrazza esclusiva di 110 mq all'ultimo piano di un grattacielo a Milano, davanti alla Stazione Centrale, pensata per eventi aziendali, lanci di prodotto, conferenze stampa, workshop e networking.",
-  "url": "https://skylab.rdg.it/",
+  "url": "https://YOUR-DOMAIN-HERE.it/",
   "image": [
-    "https://skylab.rdg.it/assets/hero-header.jpg"
+    "https://YOUR-DOMAIN-HERE.it/assets/hero-header.jpg"
   ],
   "address": {
     "@type": "PostalAddress",
@@ -1198,7 +1198,7 @@ _iub.csConfiguration = {
            (es. una pagina "Grazie, ti contatteremo presto").
         ============================================================
       -->
-      <form class="reveal" method="POST" action="https://ee9f572e.sibforms.com/v2/serve/MUIFAFG9rBa54LWr9lmY9QhA4vvbTCrj3eqpCFkATC97sTAVaJnGuK_U0ODQ7aEzHhCRe0pYA9rNv4uJoDOh2Ni7RTZz6Caihy6v3eoDh3fgm3JUFa0v--EZ06Fl7sCIODO78nOLP3BODtlRyAFV9EFz5LmRJNdzLCbTVRbIY-2GLM-0r3kUsutRORCzq1NcGfV7OKHvCx9aTqeFKA==" id="skylabForm">
+      <form class="reveal" method="POST" action="https://ee9f572e.sibforms.com/v2/serve/MUIFAFG9rBa54LWr9lmY9QhA4vvbTCrj3eqpCFkATC97sTAVaJnGuK_U0ODQ7aEzHhCRe0pYA9rNv4uJoDOh2Ni7RTZz6Caihy6v3eoDh3fgm3JUFa0v--EZ06Fl7sCIODO78nOLP3BODtlRyAFV9EFz5LmRJNdzLCbTVRbIY-2GLM-0r3kUsutRORCzq1NcGfV7OKHvCx9aTqeFKA==" id="skylabForm" target="skylabFormFrame">
         <div class="form-row">
           <div>
             <label for="f-name" data-i18n="form_name">Nome</label>
@@ -1224,7 +1224,7 @@ _iub.csConfiguration = {
           <div>
             <label for="f-phone" data-i18n="form_phone">Telefono</label>
             <!-- Campo visibile SENZA name: il valore viene riformattato e inviato tramite i campi nascosti qui sotto -->
-            <input id="f-phone" type="tel" placeholder="Inserisci il tuo numero di telefono" required>
+            <input id="f-phone" type="tel" placeholder="328 1626472" required>
             <!-- Brevo vuole COMPANY:phone_number come sole cifre, prefisso senza + o 0 iniziale (es. 393281626472) -->
             <input type="hidden" id="f-phone-hidden" name="COMPANY:phone_number">
             <!-- Stesso numero, in chiaro, sull'attributo contatto TELEFONO -->
@@ -1624,7 +1624,11 @@ _iub.csConfiguration = {
       var phoneHidden2 = document.getElementById('f-phone-hidden2');
       if(phoneEl && phoneHidden){
         var digits = phoneEl.value.replace(/\D/g, '');
+        // Rimuove un eventuale prefisso internazionale "00" (es. 0039... digitato invece di +39...)
+        if(digits.indexOf('00') === 0) digits = digits.slice(2);
+        // Rimuove UN eventuale zero iniziale tipico dei numeri nazionali italiani (es. 0328...)
         if(digits.charAt(0) === '0') digits = digits.slice(1);
+        // Aggiunge il prefisso 39 se non è già presente
         if(digits.indexOf('39') !== 0) digits = '39' + digits;
         phoneHidden.value = digits;
         if(phoneHidden2) phoneHidden2.value = phoneEl.value;
