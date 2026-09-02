@@ -38,4 +38,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://YOUR-DOMAIN-HERE.it/sitemap.xml
+Sitemap: https://skylab.rdg.it/sitemap.xml
