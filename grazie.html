@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richiesta ricevuta | Skylab</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/cropped-logo_blu_trasp-270x270.png">
+<link rel="shortcut icon" href="assets/cropped-logo_blu_trasp-270x270.png">
+<link rel="apple-touch-icon" href="assets/cropped-logo_blu_trasp-270x270.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep:#0D2D56;
+    --navy:#1A4A8A;
+    --navy-line:rgba(255,255,255,0.16);
+    --steel:#AAB4C2;
+    --gold:#F9C001;
+    --gold-light:#D9A601;
+    --white:#ffffff;
+    --ease:cubic-bezier(.22,.68,0,1);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;min-height:100vh;
+    background:radial-gradient(circle at 30% 20%, var(--navy) 0%, var(--navy-deep) 60%);
+    color:var(--white);
+    font-family:'Poppins',sans-serif;
+    display:flex;align-items:center;justify-content:center;
+    padding:24px;
+  }
+  .card{
+    max-width:460px;width:100%;text-align:center;
+    background:rgba(15,33,64,0.55);border:1px solid var(--navy-line);
+    border-radius:10px;padding:52px 36px;
+    backdrop-filter:blur(8px);
+  }
+  .check{
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(249,192,1,0.12);border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 28px;
+  }
+  .check svg{width:28px;height:28px;color:var(--gold);}
+  .brand{
+    font-weight:700;font-size:14px;letter-spacing:0.14em;
+    color:var(--steel);margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(24px,4vw,30px);font-weight:600;margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  p{
+    font-size:15px;line-height:1.65;color:var(--steel);margin:0 0 32px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:600;font-size:14.5px;
+    padding:13px 26px;border-radius:999px;
+    background:var(--gold);color:var(--navy-deep);
+    text-decoration:none;transition:background .25s, transform .25s;
+  }
+  .btn:hover{background:var(--gold-light);transform:translateY(-2px);}
+  .direct{
+    margin-top:34px;padding-top:28px;border-top:1px solid var(--navy-line);
+    font-size:13.5px;color:var(--steel);
+  }
+  .direct a{color:var(--white);text-decoration:none;font-weight:600;}
+  .direct a:hover{color:var(--gold-light);}
+  .direct .row{margin-top:8px;}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="check">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <div class="brand">SKYLAB · RDG FORMAZIONE</div>
+    <h1>Richiesta ricevuta, grazie!</h1>
+    <p>Abbiamo ricevuto la tua richiesta e ci metteremo in contatto con te al più presto per parlare del tuo evento.</p>
+    <a class="btn" href="index.html">← Torna al sito</a>
+    <div class="direct">
+      Per qualsiasi urgenza puoi scriverci direttamente:<br>
+      <div class="row"><a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a> · <a href="tel:+393297729350">+39 329 77 29 350</a></div>
+    </div>
+  </div>
+</body>
+</html>

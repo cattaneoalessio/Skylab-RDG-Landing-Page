@@ -1198,7 +1198,7 @@ _iub.csConfiguration = {
            (es. una pagina "Grazie, ti contatteremo presto").
         ============================================================
       -->
-      <form class="reveal" method="POST" action="https://ee9f572e.sibforms.com/v2/serve/MUIFAFG9rBa54LWr9lmY9QhA4vvbTCrj3eqpCFkATC97sTAVaJnGuK_U0ODQ7aEzHhCRe0pYA9rNv4uJoDOh2Ni7RTZz6Caihy6v3eoDh3fgm3JUFa0v--EZ06Fl7sCIODO78nOLP3BODtlRyAFV9EFz5LmRJNdzLCbTVRbIY-2GLM-0r3kUsutRORCzq1NcGfV7OKHvCx9aTqeFKA==" id="skylabForm">
+      <form class="reveal" method="POST" action="https://ee9f572e.sibforms.com/v2/serve/MUIFAFG9rBa54LWr9lmY9QhA4vvbTCrj3eqpCFkATC97sTAVaJnGuK_U0ODQ7aEzHhCRe0pYA9rNv4uJoDOh2Ni7RTZz6Caihy6v3eoDh3fgm3JUFa0v--EZ06Fl7sCIODO78nOLP3BODtlRyAFV9EFz5LmRJNdzLCbTVRbIY-2GLM-0r3kUsutRORCzq1NcGfV7OKHvCx9aTqeFKA==" id="skylabForm" target="skylabFormFrame">
         <div class="form-row">
           <div>
             <label for="f-name" data-i18n="form_name">Nome</label>
@@ -1260,8 +1260,9 @@ _iub.csConfiguration = {
         <input type="hidden" name="locale" value="it">
 
         <button type="submit" class="btn btn-dark" style="margin-top:6px;align-self:flex-start;" data-i18n="form_submit">Invia richiesta →</button>
-       
+        <p class="form-note" id="formStatus" style="display:none;" data-i18n="form_sending">Invio in corso...</p>
       </form>
+      <iframe name="skylabFormFrame" id="skylabFormFrame" style="display:none;" title="invio modulo contatti"></iframe>
 
       <div class="direct-card reveal">
         <h3 data-i18n="direct_title">Contatto diretto</h3>
@@ -1403,6 +1404,7 @@ _iub.csConfiguration = {
       form_type:"Tipo di evento", form_date:"Data indicativa", form_message:"Messaggio",
       form_message_ph:"Numero di ospiti previsti, orario, note...",
       form_submit:"Invia richiesta →",
+      form_sending:"Invio in corso...",
       form_note:"Il modulo è predisposto per Brevo: basta collegare l'URL del modulo e gli attributi contatto (vedi istruzioni nel codice) per attivare l'invio reale.",
       opt1:"Evento aziendale", opt2:"Formazione aziendale", opt3:"Lancio prodotto", opt4:"Conferenza stampa", opt5:"Workshop / talk",
       opt6:"Networking / aperitivo", opt7:"Altro",
@@ -1486,6 +1488,7 @@ _iub.csConfiguration = {
       form_type:"Event type", form_date:"Tentative date", form_message:"Message",
       form_message_ph:"Expected number of guests, time, notes...",
       form_submit:"Send request →",
+      form_sending:"Sending...",
       form_note:"The form is Brevo-ready: connect your form URL and contact attributes (see the code comments) to activate real submissions.",
       opt1:"Corporate event", opt2:"Corporate training", opt3:"Product launch", opt4:"Press conference", opt5:"Workshop / talk",
       opt6:"Networking / drinks", opt7:"Other",
@@ -1599,8 +1602,11 @@ _iub.csConfiguration = {
     }, {passive:true});
   }
 
-  /* ---------------- form contatti: adatta telefono e data al formato Brevo ---------------- */
+  /* ---------------- form contatti: adatta telefono e data al formato Brevo, poi mostra la pagina di conferma ---------------- */
   var skylabForm = document.getElementById('skylabForm');
+  var skylabFormFrame = document.getElementById('skylabFormFrame');
+  var formStatus = document.getElementById('formStatus');
+  var formSubmitted = false;
   if(skylabForm){
     skylabForm.addEventListener('submit', function(){
       // Telefono → COMPANY:phone_number: solo cifre, prefisso senza + o 0 iniziale (es. 393281626472)
@@ -1618,6 +1624,19 @@ _iub.csConfiguration = {
       if(dateEl && dateHidden && dateEl.value){
         var parts = dateEl.value.split('-'); // [aaaa, mm, gg]
         if(parts.length === 3) dateHidden.value = parts[2] + '-' + parts[1] + '-' + parts[0];
+      }
+      // L'invio avviene in background nell'iframe nascosto: mostriamo "invio in corso"
+      // e poi reindirizziamo alla pagina di ringraziamento, senza mai far vedere la risposta grezza di Brevo
+      formSubmitted = true;
+      var submitBtn = skylabForm.querySelector('button[type="submit"]');
+      if(submitBtn) submitBtn.disabled = true;
+      if(formStatus) formStatus.style.display = 'block';
+    });
+  }
+  if(skylabFormFrame){
+    skylabFormFrame.addEventListener('load', function(){
+      if(formSubmitted){
+        window.location.href = 'grazie.html';
       }
     });
   }
