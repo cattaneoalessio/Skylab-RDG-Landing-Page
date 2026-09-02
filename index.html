@@ -1180,24 +1180,6 @@ _iub.csConfiguration = {
     <p class="lede reveal" data-i18n="contact_body">Raccontaci il tuo evento: capienza, data indicativa e format. Ti rispondiamo con disponibilità e un preventivo su misura.</p>
 
     <div class="grid">
-      <!--
-        ============================================================
-        INTEGRAZIONE BREVO — DA COMPLETARE
-        1) Su Brevo vai in "Contatti" → "Moduli" (Forms) → crea un nuovo
-           modulo di iscrizione, aggiungi i campi corrispondenti a
-           quelli qui sotto e collega la lista Skylab desiderata.
-        2) Se vuoi salvare anche AZIENDA, TELEFONO, TIPO_EVENTO,
-           DATA_EVENTO e MESSAGGIO come dati del contatto, creali prima
-           in Brevo come "Attributi contatto" (Contatti → Impostazioni
-           → Attributi contatto), usando esattamente questi nomi.
-        3) Copia l'URL del tag <form action="..."> generato da Brevo e
-           incollalo al posto di YOUR_BREVO_FORM_ACTION_URL qui sotto.
-        4) Brevo richiede anche il campo anti-spam nascosto
-           "email_address_check" e il campo "locale": sono già inclusi.
-        5) In Brevo puoi impostare una pagina di redirect dopo l'invio
-           (es. una pagina "Grazie, ti contatteremo presto").
-        ============================================================
-      -->
       <form class="reveal" method="POST" action="https://ee9f572e.sibforms.com/v2/serve/MUIFAFG9rBa54LWr9lmY9QhA4vvbTCrj3eqpCFkATC97sTAVaJnGuK_U0ODQ7aEzHhCRe0pYA9rNv4uJoDOh2Ni7RTZz6Caihy6v3eoDh3fgm3JUFa0v--EZ06Fl7sCIODO78nOLP3BODtlRyAFV9EFz5LmRJNdzLCbTVRbIY-2GLM-0r3kUsutRORCzq1NcGfV7OKHvCx9aTqeFKA==" id="skylabForm" target="skylabFormFrame">
         <div class="form-row">
           <div>
@@ -1210,10 +1192,7 @@ _iub.csConfiguration = {
           </div>
           <div>
             <label for="f-company" data-i18n="form_company">Azienda / Agenzia</label>
-            <!-- Nel tuo account Brevo questo campo è un sotto-attributo di COMPANY: la chiave esatta è "COMPANY:name".
-                 Il campo nascosto duplica lo stesso valore sull'attributo contatto AZIENDA, così compare anche sulla scheda del contatto. -->
-            <input id="f-company" name="COMPANY:name" type="text" required>
-            <input type="hidden" id="f-company-hidden" name="AZIENDA">
+            <input id="f-company" name="AZIENDA" type="text" required>
           </div>
         </div>
         <div class="form-row">
@@ -1223,19 +1202,13 @@ _iub.csConfiguration = {
           </div>
           <div>
             <label for="f-phone" data-i18n="form_phone">Telefono</label>
-            <!-- Campo visibile SENZA name: il valore viene riformattato e inviato tramite i campi nascosti qui sotto -->
-            <input id="f-phone" type="tel" placeholder="Inserisci telefono" required>
-            <!-- Brevo vuole COMPANY:phone_number come sole cifre, prefisso senza + o 0 iniziale (es. 393281626472) -->
-            <input type="hidden" id="f-phone-hidden" name="COMPANY:phone_number">
-            <!-- Stesso numero, in chiaro, sull'attributo contatto TELEFONO -->
-            <input type="hidden" id="f-phone-hidden2" name="TELEFONO">
+            <input id="f-phone" name="TELEFONO" type="tel" placeholder="328 1626472" required>
           </div>
         </div>
         <div class="form-row">
           <div>
             <label for="f-type" data-i18n="form_type">Tipo di evento</label>
-            <!-- Nel tuo account Brevo: "COMPANY:tipo_evento". Duplicato anche su TIPO_EVENTO (attributo contatto). -->
-            <select id="f-type" name="COMPANY:tipo_evento" required>
+            <select id="f-type" name="TIPO_EVENTO" required>
               <option data-i18n="opt1">Evento aziendale</option>
                <option data-i18n="opt2">Formazione aziendale</option>
               <option data-i18n="opt3">Lancio prodotto</option>
@@ -1244,23 +1217,15 @@ _iub.csConfiguration = {
               <option data-i18n="opt6">Networking / aperitivo</option>
               <option data-i18n="opt7">Altro</option>
             </select>
-            <input type="hidden" id="f-type-hidden" name="TIPO_EVENTO">
           </div>
           <div>
             <label for="f-date" data-i18n="form_date">Data indicativa</label>
-            <!-- Campo visibile SENZA name: la data selezionata (aaaa-mm-gg) viene convertita in gg-mm-aaaa
-                 e inviata tramite il campo nascosto qui sotto, come richiede Brevo per COMPANY:data_evento.
-                 Il secondo campo nascosto duplica la stessa data (formato aaaa-mm-gg) sull'attributo contatto DATA_EVENTO. -->
-            <input id="f-date" type="date">
-            <input type="hidden" id="f-date-hidden" name="COMPANY:data_evento">
-            <input type="hidden" id="f-date-hidden2" name="DATA_EVENTO">
+            <input id="f-date" name="DATA_EVENTO" type="date">
           </div>
         </div>
         <div>
           <label for="f-msg" data-i18n="form_message">Messaggio</label>
-          <!-- Nel tuo account Brevo: "COMPANY:messaggio". Duplicato anche su MESSAGGIO (attributo contatto). -->
-          <textarea id="f-msg" name="COMPANY:messaggio" data-i18n-ph="form_message_ph" placeholder="Numero di ospiti previsti, orario, note..."></textarea>
-          <input type="hidden" id="f-msg-hidden" name="MESSAGGIO">
+          <textarea id="f-msg" name="MESSAGGIO" data-i18n-ph="form_message_ph" placeholder="Numero di ospiti previsti, orario, note..."></textarea>
         </div>
 
         <!-- campi tecnici richiesti da Brevo: non rimuovere -->
@@ -1610,52 +1575,13 @@ _iub.csConfiguration = {
     }, {passive:true});
   }
 
-  /* ---------------- form contatti: adatta telefono e data al formato Brevo, poi mostra la pagina di conferma ---------------- */
+  /* ---------------- form contatti: invio in background, poi mostra la pagina di conferma ---------------- */
   var skylabForm = document.getElementById('skylabForm');
   var skylabFormFrame = document.getElementById('skylabFormFrame');
   var formStatus = document.getElementById('formStatus');
   var formSubmitted = false;
   if(skylabForm){
     skylabForm.addEventListener('submit', function(){
-      // Telefono → COMPANY:phone_number: solo cifre, prefisso senza + o 0 iniziale (es. 393281626472)
-      // e duplicato in chiaro sull'attributo contatto TELEFONO
-      var phoneEl = document.getElementById('f-phone');
-      var phoneHidden = document.getElementById('f-phone-hidden');
-      var phoneHidden2 = document.getElementById('f-phone-hidden2');
-      if(phoneEl && phoneHidden){
-        var digits = phoneEl.value.replace(/\D/g, '');
-        // Rimuove un eventuale prefisso internazionale "00" (es. 0039... digitato invece di +39...)
-        if(digits.indexOf('00') === 0) digits = digits.slice(2);
-        // Rimuove UN eventuale zero iniziale tipico dei numeri nazionali italiani (es. 0328...)
-        if(digits.charAt(0) === '0') digits = digits.slice(1);
-        // Aggiunge il prefisso 39 se non è già presente
-        if(digits.indexOf('39') !== 0) digits = '39' + digits;
-        phoneHidden.value = digits;
-        if(phoneHidden2) phoneHidden2.value = phoneEl.value;
-      }
-      // Data → COMPANY:data_evento: da aaaa-mm-gg (input nativo) a gg-mm-aaaa (richiesto da Brevo)
-      // e duplicata (formato aaaa-mm-gg) sull'attributo contatto DATA_EVENTO
-      var dateEl = document.getElementById('f-date');
-      var dateHidden = document.getElementById('f-date-hidden');
-      var dateHidden2 = document.getElementById('f-date-hidden2');
-      if(dateEl && dateHidden && dateEl.value){
-        var parts = dateEl.value.split('-'); // [aaaa, mm, gg]
-        if(parts.length === 3) dateHidden.value = parts[2] + '-' + parts[1] + '-' + parts[0];
-        if(dateHidden2) dateHidden2.value = dateEl.value;
-      }
-      // Azienda, tipo evento e messaggio: stesso valore duplicato sui rispettivi attributi contatto
-      var companyEl = document.getElementById('f-company');
-      var companyHidden = document.getElementById('f-company-hidden');
-      if(companyEl && companyHidden) companyHidden.value = companyEl.value;
-
-      var typeEl = document.getElementById('f-type');
-      var typeHidden = document.getElementById('f-type-hidden');
-      if(typeEl && typeHidden) typeHidden.value = typeEl.value;
-
-      var msgEl = document.getElementById('f-msg');
-      var msgHidden = document.getElementById('f-msg-hidden');
-      if(msgEl && msgHidden) msgHidden.value = msgEl.value;
-
       // L'invio avviene in background nell'iframe nascosto: mostriamo "invio in corso"
       // e poi reindirizziamo alla pagina di ringraziamento, senza mai far vedere la risposta grezza di Brevo
       formSubmitted = true;
