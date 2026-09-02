@@ -1746,6 +1746,10 @@ _iub.csConfiguration = {
   var input = document.getElementById('gateInput');
   var error = document.getElementById('gateError');
 
+  // Il blocco di accesso è disattivato (HTML commentato): se questi elementi
+  // non esistono, esci senza fare nulla invece di generare un errore in console.
+  if(!gate || !content || !form || !input || !error) return;
+
   form.addEventListener('submit', function(e){
     e.preventDefault();
     if(input.value === ACCESS_CODE){
