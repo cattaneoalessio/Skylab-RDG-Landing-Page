@@ -1204,13 +1204,14 @@ _iub.csConfiguration = {
             <label for="f-name" data-i18n="form_name">Nome</label>
             <input id="f-name" name="FIRSTNAME" type="text" required>
           </div>
-              <div>
+          <div>
             <label for="f-lastname" data-i18n="form_lastname">Cognome</label>
             <input id="f-lastname" name="LASTNAME" type="text" required>
           </div>
           <div>
             <label for="f-company" data-i18n="form_company">Azienda / Agenzia</label>
-            <input id="f-company" name="COMPANY" type="text" required>
+            <!-- Nel tuo account Brevo questo campo è un sotto-attributo di COMPANY: la chiave esatta è "COMPANY:name" -->
+            <input id="f-company" name="COMPANY:name" type="text" required>
           </div>
         </div>
         <div class="form-row">
@@ -1220,13 +1221,17 @@ _iub.csConfiguration = {
           </div>
           <div>
             <label for="f-phone" data-i18n="form_phone">Telefono</label>
-            <input id="f-phone" name="TELEFONO" type="tel" required>
+            <!-- Campo visibile SENZA name: il valore viene riformattato e inviato tramite il campo nascosto qui sotto -->
+            <input id="f-phone" type="tel" placeholder="328 1626472" required>
+            <!-- Brevo vuole COMPANY:phone_number come sole cifre, prefisso senza + o 0 iniziale (es. 393281626472) -->
+            <input type="hidden" id="f-phone-hidden" name="COMPANY:phone_number">
           </div>
         </div>
         <div class="form-row">
           <div>
             <label for="f-type" data-i18n="form_type">Tipo di evento</label>
-            <select id="f-type" name="TIPO_EVENTO" required>
+            <!-- Nel tuo account Brevo: "COMPANY:tipo_evento" -->
+            <select id="f-type" name="COMPANY:tipo_evento" required>
               <option data-i18n="opt1">Evento aziendale</option>
                <option data-i18n="opt2">Formazione aziendale</option>
               <option data-i18n="opt3">Lancio prodotto</option>
@@ -1238,12 +1243,16 @@ _iub.csConfiguration = {
           </div>
           <div>
             <label for="f-date" data-i18n="form_date">Data indicativa</label>
-            <input id="f-date" name="DATA_EVENTO" type="date">
+            <!-- Campo visibile SENZA name: la data selezionata (aaaa-mm-gg) viene convertita in gg-mm-aaaa
+                 e inviata tramite il campo nascosto qui sotto, come richiede Brevo -->
+            <input id="f-date" type="date">
+            <input type="hidden" id="f-date-hidden" name="COMPANY:data_evento">
           </div>
         </div>
         <div>
           <label for="f-msg" data-i18n="form_message">Messaggio</label>
-          <textarea id="f-msg" name="MESSAGGIO" data-i18n-ph="form_message_ph" placeholder="Numero di ospiti previsti, orario, note..."></textarea>
+          <!-- Nel tuo account Brevo: "COMPANY:messaggio" -->
+          <textarea id="f-msg" name="COMPANY:messaggio" data-i18n-ph="form_message_ph" placeholder="Numero di ospiti previsti, orario, note..."></textarea>
         </div>
 
         <!-- campi tecnici richiesti da Brevo: non rimuovere -->
@@ -1588,6 +1597,29 @@ _iub.csConfiguration = {
         heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px)';
       }
     }, {passive:true});
+  }
+
+  /* ---------------- form contatti: adatta telefono e data al formato Brevo ---------------- */
+  var skylabForm = document.getElementById('skylabForm');
+  if(skylabForm){
+    skylabForm.addEventListener('submit', function(){
+      // Telefono → COMPANY:phone_number: solo cifre, prefisso senza + o 0 iniziale (es. 393281626472)
+      var phoneEl = document.getElementById('f-phone');
+      var phoneHidden = document.getElementById('f-phone-hidden');
+      if(phoneEl && phoneHidden){
+        var digits = phoneEl.value.replace(/\D/g, '');
+        if(digits.charAt(0) === '0') digits = digits.slice(1);
+        if(digits.indexOf('39') !== 0) digits = '39' + digits;
+        phoneHidden.value = digits;
+      }
+      // Data → COMPANY:data_evento: da aaaa-mm-gg (input nativo) a gg-mm-aaaa (richiesto da Brevo)
+      var dateEl = document.getElementById('f-date');
+      var dateHidden = document.getElementById('f-date-hidden');
+      if(dateEl && dateHidden && dateEl.value){
+        var parts = dateEl.value.split('-'); // [aaaa, mm, gg]
+        if(parts.length === 3) dateHidden.value = parts[2] + '-' + parts[1] + '-' + parts[0];
+      }
+    });
   }
 
   /* ---------------- preferenze cookie (Iubenda) ---------------- */
