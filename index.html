@@ -782,6 +782,17 @@
   input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none;}
   textarea{resize:vertical;min-height:110px;}
   .form-note{font-size:12px;color:var(--steel-dim);margin-top:2px;}
+  .form-consent{
+    display:flex;align-items:flex-start;gap:10px;
+    font-size:13px;color:var(--steel-dim);line-height:1.5;
+    margin-top:6px;cursor:pointer;
+  }
+  .form-consent input[type="checkbox"]{
+    width:18px;height:18px;flex-shrink:0;margin-top:1px;
+    accent-color:var(--gold);cursor:pointer;
+  }
+  .form-consent a{color:var(--navy);text-decoration:underline;}
+  .form-consent a:hover{color:var(--gold-light);}
   .direct-card{
     background:var(--navy-deep);color:var(--white);border-radius:6px;padding:34px;
   }
@@ -1220,6 +1231,11 @@
         <input type="text" name="email_address_check" value="" style="display:none !important" tabindex="-1" autocomplete="off">
         <input type="hidden" name="locale" value="it">
 
+        <label class="form-consent">
+          <input type="checkbox" id="f-privacy" required>
+          <span data-i18n-html="form_privacy_label">Ho letto e accetto la <a href="privacy.html" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a> *</span>
+        </label>
+
         <button type="submit" class="btn btn-dark" style="margin-top:6px;align-self:flex-start;" data-i18n="form_submit">Invia richiesta →</button>
         <p class="form-note" id="formStatus" style="display:none;" data-i18n="form_sending">Invio in corso...</p>
       </form>
@@ -1258,7 +1274,7 @@
     <img class="flogo" src="assets/logo_bianco_completo-footer.png" alt="RDG Formazione">
     <p class="fine" data-i18n-html="footer_text">Skylab è uno spazio eventi di RDG Formazione · Via Antonio da Recanate, 2 – 20124 Milano · <a href="https://rdg.it" target="_blank" rel="noopener">rdg.it</a></p>
     <p class="fine legal-links">
-      <a href="privacy.html" data-i18n="footer_privacy_link">Privacy &amp; Cookie Policy</a>
+      <a href="privacy.html" target="_blank" rel="noopener" data-i18n="footer_privacy_link">Privacy &amp; Cookie Policy</a>
       <span aria-hidden="true">·</span>
       <a href="#" data-cc="show-preferencesModal" data-i18n="footer_cookie_prefs">Preferenze cookie</a>
     </p>
@@ -1361,6 +1377,7 @@
       form_message_ph:"Numero di ospiti previsti, orario, note...",
       form_submit:"Invia richiesta →",
       form_sending:"Invio in corso...",
+      form_privacy_label:"Ho letto e accetto la <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">Privacy &amp; Cookie Policy</a> *",
       form_note:"Il modulo è predisposto per Brevo: basta collegare l'URL del modulo e gli attributi contatto (vedi istruzioni nel codice) per attivare l'invio reale.",
       opt1:"Evento aziendale", opt2:"Formazione aziendale", opt3:"Lancio prodotto", opt4:"Conferenza stampa", opt5:"Workshop / talk",
       opt6:"Networking / aperitivo", opt7:"Altro",
@@ -1446,6 +1463,7 @@
       form_message_ph:"Expected number of guests, time, notes...",
       form_submit:"Send request →",
       form_sending:"Sending...",
+      form_privacy_label:"I have read and accept the <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">Privacy &amp; Cookie Policy</a> *",
       form_note:"The form is Brevo-ready: connect your form URL and contact attributes (see the code comments) to activate real submissions.",
       opt1:"Corporate event", opt2:"Corporate training", opt3:"Product launch", opt4:"Press conference", opt5:"Workshop / talk",
       opt6:"Networking / drinks", opt7:"Other",
@@ -1767,27 +1785,37 @@
     --cc-modal-border-radius:10px;
     --cc-btn-border-radius:999px;
     --cc-bg:#0D2D56;
-    --cc-text:#ffffff;
+    --cc-primary-color:#ffffff;
     --cc-secondary-color:#AAB4C2;
+    --cc-link-color:#F9C001;
+    --cc-footer-bg:rgba(255,255,255,0.05);
+    --cc-footer-color:#AAB4C2;
+    --cc-footer-border-color:rgba(255,255,255,0.16);
     --cc-cookie-category-block-bg:rgba(255,255,255,0.05);
     --cc-cookie-category-block-border:rgba(255,255,255,0.16);
     --cc-cookie-category-block-hover-bg:rgba(255,255,255,0.08);
+    --cc-cookie-category-block-hover-border:rgba(255,255,255,0.16);
+    --cc-cookie-category-expanded-block-bg:rgba(255,255,255,0.03);
+    --cc-cookie-category-expanded-block-hover-bg:rgba(255,255,255,0.08);
     --cc-separator-border-color:rgba(255,255,255,0.16);
+    --cc-overlay-bg:rgba(13,45,86,0.65);
     --cc-btn-primary-bg:#F9C001;
     --cc-btn-primary-border-color:#F9C001;
     --cc-btn-primary-color:#0D2D56;
     --cc-btn-primary-hover-bg:#D9A601;
     --cc-btn-primary-hover-border-color:#D9A601;
     --cc-btn-primary-hover-color:#0D2D56;
-    --cc-btn-secondary-bg:transparent;
+    --cc-btn-secondary-bg:rgba(255,255,255,0.08);
     --cc-btn-secondary-color:#ffffff;
     --cc-btn-secondary-border-color:rgba(255,255,255,0.35);
-    --cc-btn-secondary-hover-bg:rgba(255,255,255,0.08);
+    --cc-btn-secondary-hover-bg:rgba(255,255,255,0.16);
     --cc-btn-secondary-hover-color:#ffffff;
     --cc-toggle-on-bg:#F9C001;
     --cc-toggle-off-bg:#3a4f6b;
     --cc-toggle-on-knob-bg:#0D2D56;
+    --cc-toggle-off-knob-bg:#ffffff;
     --cc-toggle-readonly-bg:#5a6f8b;
+    --cc-toggle-readonly-knob-bg:#ffffff;
   }
 </style>
 <script>
@@ -1813,7 +1841,7 @@
               acceptAllBtn:'Accetta tutti',
               acceptNecessaryBtn:'Rifiuta tutti',
               showPreferencesBtn:'Gestisci preferenze',
-              footer:'<a href="privacy.html">Privacy &amp; Cookie Policy</a>'
+              footer:'<a href="privacy.html" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a>'
             },
             preferencesModal:{
               title:'Preferenze cookie',
@@ -1838,7 +1866,7 @@
                 },
                 {
                   title:'Maggiori informazioni',
-                  description:'Per qualsiasi domanda su questa informativa, scrivici a <a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a>. Leggi anche la nostra <a href="privacy.html">Privacy &amp; Cookie Policy</a> completa.'
+                  description:'Per qualsiasi domanda su questa informativa, scrivici a <a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a>. Leggi anche la nostra <a href="privacy.html" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a> completa.'
                 }
               ]
             }
@@ -1850,7 +1878,7 @@
               acceptAllBtn:'Accept all',
               acceptNecessaryBtn:'Reject all',
               showPreferencesBtn:'Manage preferences',
-              footer:'<a href="privacy.html">Privacy &amp; Cookie Policy</a>'
+              footer:'<a href="privacy.html" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a>'
             },
             preferencesModal:{
               title:'Cookie preferences',
@@ -1875,7 +1903,7 @@
                 },
                 {
                   title:'More information',
-                  description:'For any questions about this notice, write to us at <a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a>. Read our full <a href="privacy.html">Privacy &amp; Cookie Policy</a>.'
+                  description:'For any questions about this notice, write to us at <a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a>. Read our full <a href="privacy.html" target="_blank" rel="noopener">Privacy &amp; Cookie Policy</a>.'
                 }
               ]
             }
