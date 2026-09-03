@@ -419,11 +419,15 @@
     padding:0 clamp(20px,5vw,64px) 88px;
     width:100%;
   }
+  @media (max-width:640px){
+    #hero{height:82vh;min-height:480px;}
+    #hero .content{padding-bottom:48px;}
+  }
   #hero .eyebrow{color:var(--gold-light);}
   #hero h1{
     font-size:clamp(40px,7vw,86px);
     line-height:0.98;
-    max-width:14ch;
+    max-width:23ch;
     margin-bottom:22px;
   }
   #hero h1 em{
@@ -858,7 +862,7 @@
 <header id="siteHeader">
   <div class="brand">
     <span class="name">SKYLAB</span>
-    <span class="tag">TERRAZZA EVENTI · BY RDG FORMAZIONE</span>
+    <span class="tag" data-i18n="header_tag">TERRAZZA EVENTI · BY RDG FORMAZIONE</span>
   </div>
   <div class="head-actions">
     <div class="lang-toggle" role="group" aria-label="Lingua / Language">
@@ -1201,7 +1205,7 @@
           </div>
           <div>
             <label for="f-phone" data-i18n="form_phone">Telefono</label>
-            <input id="f-phone" name="TELEFONO" type="tel" placeholder="Il tuo numero" required>
+            <input id="f-phone" name="TELEFONO" type="tel" placeholder="328 1626472" required>
           </div>
         </div>
         <div class="form-row">
@@ -1302,6 +1306,7 @@
   var i18n = {
     it: {
       nav_cta:"Richiedi info",
+      header_tag:"TERRAZZA EVENTI · BY RDG FORMAZIONE",
       rail_readout:"SKYLAB / MILANO",
       rail_1:"INGRESSO", rail_2:"SPAZIO", rail_3:"EVENTI", rail_4:"PERCHÉ",
       rail_5:"GALLERIA", rail_6:"ESEMPI", rail_7:"SERVIZI", rail_8:"ARRIVO", rail_9:"FAQ", rail_10:"CONTATTI",
@@ -1388,6 +1393,7 @@
     },
     en: {
       nav_cta:"Request info",
+      header_tag:"ROOFTOP EVENT SPACE · BY RDG FORMAZIONE",
       rail_readout:"SKYLAB / MILAN",
       rail_1:"ENTRY", rail_2:"SPACE", rail_3:"EVENTS", rail_4:"WHY US",
       rail_5:"GALLERY", rail_6:"EXAMPLES", rail_7:"SERVICES", rail_8:"GETTING HERE", rail_9:"FAQ", rail_10:"CONTACT",
