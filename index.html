@@ -448,6 +448,9 @@
   }
   .scroll-cue .line{width:1px;height:34px;background:linear-gradient(180deg,var(--gold),transparent);animation:pulse 2s infinite;}
   @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+  @media (max-width:760px){
+    #hero .scroll-cue{display:none;}
+  }
 
   /* ================= generic section ================= */
   .section{padding:118px 0;}
@@ -1223,7 +1226,7 @@
           </div>
           <div>
             <label for="f-date" data-i18n="form_date">Data indicativa</label>
-            <input id="f-date" name="DATA_EVENTO" type="text" placeholder="gg/mm/aaaa">
+            <input id="f-date" name="DATA_EVENTO" type="text" inputmode="numeric" maxlength="10" placeholder="gg/mm/aaaa">
           </div>
         </div>
         <div>
@@ -1582,6 +1585,21 @@
         heroBg.style.transform = 'translateY(' + (y * 0.25) + 'px)';
       }
     }, {passive:true});
+  }
+
+  /* ---------------- data indicativa: formattazione automatica gg/mm/aaaa ---------------- */
+  var dateInput = document.getElementById('f-date');
+  if(dateInput){
+    dateInput.addEventListener('input', function(){
+      var digits = dateInput.value.replace(/\D/g, '').slice(0, 8); // solo cifre, max 8 (gg+mm+aaaa)
+      var formatted = digits;
+      if(digits.length > 4){
+        formatted = digits.slice(0,2) + '/' + digits.slice(2,4) + '/' + digits.slice(4);
+      } else if(digits.length > 2){
+        formatted = digits.slice(0,2) + '/' + digits.slice(2);
+      }
+      dateInput.value = formatted;
+    });
   }
 
   /* ---------------- form contatti: invio in background, poi mostra la pagina di conferma ---------------- */
