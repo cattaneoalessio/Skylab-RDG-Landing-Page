@@ -5,27 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ============================================================
-     IUBENDA — Cookie Solution (banner di consenso cookie)
-     Va inserito il più presto possibile nell'head, PRIMA di eventuali
-     altri script/risorse esterne (Google Fonts inclusi), così può
-     bloccarli finché l'utente non dà il consenso.
-     Sostituisci "IUBENDA_SITE_ID" e "IUBENDA_POLICY_ID" (comprese le
-     virgolette, se il valore reale è numerico) con i valori reali:
-     li trovi nella tua dashboard Iubenda, dopo aver creato il
-     documento "Privacy e Cookie Policy" per questo sito
-     (Iubenda → I miei siti → [Skylab] → Cookie Solution → Installa).
+     COOKIECONSENT v3 (orestbida) — banner di consenso cookie
+     Libreria open source, gratuita, nessun account/abbonamento.
+     Documentazione: https://cookieconsent.orestbida.com/
+     Va caricata il più presto possibile nell'head, PRIMA di eventuali
+     script di terze parti (Google Fonts inclusi) da voler bloccare
+     finché l'utente non dà il consenso.
      ============================================================ -->
-<script type="text/javascript">
-var _iub = _iub || [];
-_iub.csConfiguration = {
-  "siteId": "IUBENDA_SITE_ID",
-  "cookiePolicyId": "IUBENDA_POLICY_ID",
-  "lang": "it",
-  "storage": { "useSiteId": true }
-};
-</script>
-<script type="text/javascript" src="https://cs.iubenda.com/autoblocking/IUBENDA_SITE_ID.js"></script>
-<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
+<script defer src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js"></script>
 
 <title>Terrazza a Milano per Eventi Aziendali | Skylab – Skyline Milano</title>
 <meta name="description" content="Skylab è la terrazza esclusiva a Milano per eventi aziendali: 110 mq con vista sullo skyline, davanti alla Stazione Centrale. Spazio eventi firmato RDG Formazione, richiedi info e sopralluogo.">
@@ -1202,7 +1190,7 @@ _iub.csConfiguration = {
           </div>
           <div>
             <label for="f-phone" data-i18n="form_phone">Telefono</label>
-            <input id="f-phone" name="TELEFONO" type="tel" placeholder="Il tuo telefono" required>
+            <input id="f-phone" name="TELEFONO" type="tel" placeholder="328 1626472" required>
           </div>
         </div>
         <div class="form-row">
@@ -1270,17 +1258,12 @@ _iub.csConfiguration = {
     <img class="flogo" src="assets/logo_bianco_completo-footer.png" alt="RDG Formazione">
     <p class="fine" data-i18n-html="footer_text">Skylab è uno spazio eventi di RDG Formazione · Via Antonio da Recanate, 2 – 20124 Milano · <a href="https://rdg.it" target="_blank" rel="noopener">rdg.it</a></p>
     <p class="fine legal-links">
-      <a href="https://www.iubenda.com/privacy-policy/IUBENDA_POLICY_ID" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Privacy Policy">Privacy Policy</a>
+      <a href="privacy.html" data-i18n="footer_privacy_link">Privacy &amp; Cookie Policy</a>
       <span aria-hidden="true">·</span>
-      <a href="https://www.iubenda.com/privacy-policy/IUBENDA_POLICY_ID/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe" title="Cookie Policy">Cookie Policy</a>
-      <span aria-hidden="true">·</span>
-      <a href="#" id="cookiePrefsLink" data-i18n="footer_cookie_prefs">Preferenze cookie</a>
+      <a href="#" data-cc="show-preferencesModal" data-i18n="footer_cookie_prefs">Preferenze cookie</a>
     </p>
   </div>
 </footer>
-
-<!-- Loader Iubenda per i link Privacy/Cookie Policy qui sopra (separato dallo script del banner, già nell'head) -->
-<script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
 
 
 <!-- Lightbox galleria -->
@@ -1383,6 +1366,7 @@ _iub.csConfiguration = {
       opt6:"Networking / aperitivo", opt7:"Altro",
       direct_title:"Contatto diretto",
       footer_text:"Skylab è uno spazio eventi di RDG Formazione · Via Antonio da Recanate, 2 – 20124 Milano · <a href=\"https://rdg.it\" target=\"_blank\" rel=\"noopener\">rdg.it</a>",
+      footer_privacy_link:"Privacy & Cookie Policy",
       footer_cookie_prefs:"Preferenze cookie"
     },
     en: {
@@ -1467,6 +1451,7 @@ _iub.csConfiguration = {
       opt6:"Networking / drinks", opt7:"Other",
       direct_title:"Direct contact",
       footer_text:"Skylab is an event space by RDG Formazione · Via Antonio da Recanate, 2 – 20124 Milan · <a href=\"https://rdg.it\" target=\"_blank\" rel=\"noopener\">rdg.it</a>",
+      footer_privacy_link:"Privacy & Cookie Policy",
       footer_cookie_prefs:"Cookie preferences"
     }
   };
@@ -1594,17 +1579,6 @@ _iub.csConfiguration = {
     skylabFormFrame.addEventListener('load', function(){
       if(formSubmitted){
         window.location.href = 'grazie.html';
-      }
-    });
-  }
-
-  /* ---------------- preferenze cookie (Iubenda) ---------------- */
-  var cookiePrefsLink = document.getElementById('cookiePrefsLink');
-  if(cookiePrefsLink){
-    cookiePrefsLink.addEventListener('click', function(e){
-      e.preventDefault();
-      if(window._iub && window._iub.cs && window._iub.cs.api && typeof window._iub.cs.api.openPreferences === 'function'){
-        window._iub.cs.api.openPreferences();
       }
     });
   }
@@ -1777,6 +1751,139 @@ _iub.csConfiguration = {
   document.body.style.overflow = 'hidden';
   input.focus();
 })();
+</script>
+
+<!-- ============================================================
+     CookieConsent v3 — configurazione e stile
+     Categorie: "necessary" (sempre attiva) e "analytics" (spenta di
+     default, pronta per quando in futuro aggiungerete Google Analytics
+     o simili). Per collegare uno script futuro a una categoria, vedi:
+     https://cookieconsent.orestbida.com/advanced/manage-scripts.html
+     Esempio: <script type="text/plain" data-category="analytics" src="...">
+     ============================================================ -->
+<style>
+  #cc-main{
+    --cc-font-family:'Poppins',sans-serif;
+    --cc-modal-border-radius:10px;
+    --cc-btn-border-radius:999px;
+    --cc-bg:#0D2D56;
+    --cc-text:#ffffff;
+    --cc-secondary-color:#AAB4C2;
+    --cc-cookie-category-block-bg:rgba(255,255,255,0.05);
+    --cc-cookie-category-block-border:rgba(255,255,255,0.16);
+    --cc-cookie-category-block-hover-bg:rgba(255,255,255,0.08);
+    --cc-separator-border-color:rgba(255,255,255,0.16);
+    --cc-btn-primary-bg:#F9C001;
+    --cc-btn-primary-border-color:#F9C001;
+    --cc-btn-primary-color:#0D2D56;
+    --cc-btn-primary-hover-bg:#D9A601;
+    --cc-btn-primary-hover-border-color:#D9A601;
+    --cc-btn-primary-hover-color:#0D2D56;
+    --cc-btn-secondary-bg:transparent;
+    --cc-btn-secondary-color:#ffffff;
+    --cc-btn-secondary-border-color:rgba(255,255,255,0.35);
+    --cc-btn-secondary-hover-bg:rgba(255,255,255,0.08);
+    --cc-btn-secondary-hover-color:#ffffff;
+    --cc-toggle-on-bg:#F9C001;
+    --cc-toggle-off-bg:#3a4f6b;
+    --cc-toggle-on-knob-bg:#0D2D56;
+    --cc-toggle-readonly-bg:#5a6f8b;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    if(typeof CookieConsent === 'undefined') return;
+    CookieConsent.run({
+      guiOptions:{
+        consentModal:{ layout:'box', position:'bottom right', equalWeightButtons:true },
+        preferencesModal:{ layout:'box', equalWeightButtons:true }
+      },
+      categories:{
+        necessary:{ enabled:true, readOnly:true },
+        analytics:{}
+      },
+      language:{
+        default:'it',
+        autoDetect:'document',
+        translations:{
+          it:{
+            consentModal:{
+              title:'Usiamo i cookie',
+              description:'Questo sito usa cookie tecnici necessari al funzionamento e, solo con il tuo consenso, cookie di analisi per capire come viene usato il sito. Puoi accettare tutto, rifiutare quelli non necessari, o scegliere le tue preferenze.',
+              acceptAllBtn:'Accetta tutti',
+              acceptNecessaryBtn:'Rifiuta tutti',
+              showPreferencesBtn:'Gestisci preferenze',
+              footer:'<a href="privacy.html">Privacy &amp; Cookie Policy</a>'
+            },
+            preferencesModal:{
+              title:'Preferenze cookie',
+              acceptAllBtn:'Accetta tutti',
+              acceptNecessaryBtn:'Rifiuta tutti',
+              savePreferencesBtn:'Salva preferenze',
+              closeIconLabel:'Chiudi',
+              sections:[
+                {
+                  title:'Utilizzo dei cookie',
+                  description:'Qui puoi attivare o disattivare le diverse categorie di cookie usate su questo sito. I cookie tecnici non possono essere disattivati perché necessari al funzionamento del sito.'
+                },
+                {
+                  title:'Cookie tecnici necessari',
+                  description:'Indispensabili per il funzionamento del sito (es. ricordare le tue preferenze sui cookie). Non raccolgono dati a scopo statistico o pubblicitario.',
+                  linkedCategory:'necessary'
+                },
+                {
+                  title:'Cookie di analisi',
+                  description:'Ci aiuterebbero a capire come i visitatori usano il sito, in forma aggregata. Al momento questa categoria non è ancora attiva su Skylab, resta pronta per un uso futuro.',
+                  linkedCategory:'analytics'
+                },
+                {
+                  title:'Maggiori informazioni',
+                  description:'Per qualsiasi domanda su questa informativa, scrivici a <a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a>. Leggi anche la nostra <a href="privacy.html">Privacy &amp; Cookie Policy</a> completa.'
+                }
+              ]
+            }
+          },
+          en:{
+            consentModal:{
+              title:'We use cookies',
+              description:'This site uses necessary technical cookies and, only with your consent, analytics cookies to understand how the site is used. You can accept all, reject non-essential ones, or choose your preferences.',
+              acceptAllBtn:'Accept all',
+              acceptNecessaryBtn:'Reject all',
+              showPreferencesBtn:'Manage preferences',
+              footer:'<a href="privacy.html">Privacy &amp; Cookie Policy</a>'
+            },
+            preferencesModal:{
+              title:'Cookie preferences',
+              acceptAllBtn:'Accept all',
+              acceptNecessaryBtn:'Reject all',
+              savePreferencesBtn:'Save preferences',
+              closeIconLabel:'Close',
+              sections:[
+                {
+                  title:'Cookie usage',
+                  description:'Here you can turn the different cookie categories on or off. Necessary cookies can\'t be disabled as they are required for the site to function.'
+                },
+                {
+                  title:'Necessary cookies',
+                  description:'Required for the website to function properly (e.g. remembering your cookie preferences). They don\'t collect data for statistics or advertising.',
+                  linkedCategory:'necessary'
+                },
+                {
+                  title:'Analytics cookies',
+                  description:'Would help us understand how visitors use the site, in aggregate form. This category isn\'t active yet on Skylab, but is ready for future use.',
+                  linkedCategory:'analytics'
+                },
+                {
+                  title:'More information',
+                  description:'For any questions about this notice, write to us at <a href="mailto:milanoformazione@rdg.it">milanoformazione@rdg.it</a>. Read our full <a href="privacy.html">Privacy &amp; Cookie Policy</a>.'
+                }
+              ]
+            }
+          }
+        }
+      }
+    });
+  });
 </script>
 </body>
 </html>
