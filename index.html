@@ -872,7 +872,7 @@
       <button type="button" data-lang="it" class="active">IT</button>
       <button type="button" data-lang="en">EN</button>
     </div>
-    <a href="#contatti" class="btn btn-gold" data-i18n="nav_cta">Richiedi info</a>
+    <a href="#contatti" data-anchor-nav class="btn btn-gold" data-i18n="nav_cta">Richiedi info</a>
   </div>
 </header>
 
@@ -906,8 +906,8 @@
     <h1 data-i18n-html="hero_title">La tua terrazza,<br><em>sopra Milano.</em></h1>
     <p class="sub" data-i18n="hero_sub">Skylab è lo spazio eventi esclusivo di Milano: 110 mq di terrazza panoramica sullo skyline, all'ultimo piano di un grattacielo davanti alla Stazione Centrale. Firmato RDG Formazione, per eventi aziendali che devono lasciare il segno.</p>
     <div class="cta-row">
-      <a href="#contatti" class="btn btn-gold" data-i18n="hero_cta_primary">Richiedi una visita</a>
-      <a href="#spazio" class="btn btn-ghost" data-i18n="hero_cta_secondary">Scopri lo spazio</a>
+      <a href="#contatti" data-anchor-nav class="btn btn-gold" data-i18n="hero_cta_primary">Richiedi una visita</a>
+      <a href="#spazio" data-anchor-nav class="btn btn-ghost" data-i18n="hero_cta_secondary">Scopri lo spazio</a>
     </div>
   </div>
   <div class="scroll-cue"><span data-i18n="hero_scroll">SCROLL</span><span class="line"></span></div>
@@ -1208,7 +1208,7 @@
           </div>
           <div>
             <label for="f-phone" data-i18n="form_phone">Telefono</label>
-            <input id="f-phone" name="TELEFONO" type="tel" placeholder="Inserisci" required>
+            <input id="f-phone" name="TELEFONO" type="tel" placeholder="328 1626472" required>
           </div>
         </div>
         <div class="form-row">
@@ -1541,6 +1541,18 @@
     t.addEventListener('click', function(){
       var target = document.getElementById(t.getAttribute('data-target'));
       if(target) target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'});
+    });
+  });
+
+  /* ---------------- pulsanti "Richiedi info" / "Scopri lo spazio": scroll senza cambiare l'URL ---------------- */
+  document.querySelectorAll('a[data-anchor-nav]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth'});
+      }
     });
   });
 
